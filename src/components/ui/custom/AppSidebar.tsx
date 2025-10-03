@@ -28,13 +28,11 @@ const dataUser = {
   user: {
     name: "shadcn",
     email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    avatar: "https://github.com/shadcn.png",
   },
 };
 const AppSidebar = () => {
   const { data, isLoading } = useChatList();
-
-  console.warn(data);
 
   return (
     <Sidebar collapsible="icon">

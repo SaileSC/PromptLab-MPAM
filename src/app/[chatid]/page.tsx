@@ -3,6 +3,7 @@
 import { ChatLayout } from "@/components/chat/ChatLayout";
 import AppSidebar from "@/components/ui/custom/AppSidebar";
 import PromptSidebar from "@/components/ui/custom/PromptSidebar";
+import { Spinner } from "@/components/ui/shadcn-io/spinner";
 import { useChatHistory } from "@/hooks/useChatHistory";
 import { useParams } from "next/navigation";
 
@@ -16,7 +17,13 @@ const Chat = () => {
     <div className="flex h-screen w-full bg-background text-foreground">
       <AppSidebar />
       <main className="flex flex-1">
-        <ChatLayout historic={data?.messages} />
+        {!isLoading ? (
+          <ChatLayout historic={data?.messages} />
+        ) : (
+          <div className="flex grow justify-center items-center">
+            <Spinner className="text-red-500" variant="ring" size={64} />
+          </div>
+        )}
       </main>
       <PromptSidebar />
     </div>
